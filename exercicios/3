@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#Recebe a string
+echo "Digite o texto/arquivo que quer testar: " 
+read line
+
+#Faz a comparação se o texto coletado é um diretorio ou não
+if [[ ! -d $line ]]; then
+		echo "O texto não é um diretorio"
+	else
+		echo "O texto é um diretorio"
+fi

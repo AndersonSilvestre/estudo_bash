@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#Testa se o numero é positivo ou negativo
+
+#Recebe o número
+echo "Digite o número desejado"
+read num
+
+if [[ num -ge 1 ]]; then
+		echo "O número $num é Positivo"
+	elif [[ num -le -1 ]]; then
+		echo "O número $num é Negativo"
+	else
+		echo "O número $num é Nulo"		
+fi

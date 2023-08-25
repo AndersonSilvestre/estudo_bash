@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Gravar uma linha em um arquivo já existente.
+
+echo "Digite o nome do arquivo que deseja adicionar mais uma linha de texto:"
+read namearq
+
+#Recebe a string
+function coisas_a_imprimir(){
+    read texto
+    echo $texto 
+}
+
+#Verifica se o arquivo existe
+if [[ ! -f $namearq ]]; then
+	echo "Esse arquivo não existe."
+#Verifica se o arquivo pode ser editado
+	elif [[ ! -w $namearq ]]; then
+		echo "Você não tem permissão para editar esse arquivo"
+		else
+		echo "O que você gostaria de salvar no arquivo?"
+		coisas_a_imprimir >> "${namearq}"
+fi

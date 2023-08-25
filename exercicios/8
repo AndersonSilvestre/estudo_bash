@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#Cria um arquivo com o tamanho selecionado.
+
+echo "Digite o nome do arquivo que quer criar:"
+read name
+
+echo "Digite o tamanho do arquivo que deseja criar:"
+read size
+
+dd if=/dev/zero of=$name bs=1M count=$size

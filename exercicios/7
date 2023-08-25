@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Verifica se o usuario existe e quais usuarios estão logados no momento
+echo "Digite o nome do usuário que deseja consultar:" 
+read userconsult
+
+#Verifica se já existe um usuário com o mesmo nome da read
+usuario=$(cut -f1 -d":" /etc/passwd | grep $userconsult)
+
+if [[ -z  $usuario ]]; then
+	echo -e "\n""O usuário ""\033[1m$userconsult\033[0m"" não existe.""\n"
+	who -H; echo -e "Usuários conectados:"; who -uq
+	else
+	who -H; echo -e "Usuários conectados:"; who -uq
+fi

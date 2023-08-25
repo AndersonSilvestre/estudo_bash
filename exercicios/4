@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#Recebe a string
+echo "Digite o nome do arquivo que deseja criar: " 
+read name
+
+
+#verifica se o nome do arquivo, caso já exista ele pede um novo nome.
+if [[ ! -e $name ]]; then
+		touch $name
+		chmod 444 $name
+		# Permissão somente leitura para todos os usuarios no computador
+	elif [[ -e $name ]]; then
+		echo "O arquivo já existe, por favor digite outro nome."
+		read name
+		
+		if [[ ! -e $name ]]; then
+			touch $name
+			chmod 444 $name
+		else
+			echo "Já existe um arquivo com esse nome. Tente outro nome!"
+			#read name
+		fi
+fi

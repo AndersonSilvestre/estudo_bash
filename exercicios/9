@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Cria backup simples com apenas dois arquivos selecionados.
+
+data=$(date +"%d%m%Y")
+datalogstart=$(date +"%d/%m/%Y %H:%M")
+datalogend=$(date +"%d/%m/%Y %H:%M")
+
+#Verifica se o arquivo .log existe
+function criar_log(){
+	if [[ ! -e  bkp-$data.log ]]; then	
+		touch bkp-$data.log
+	fi
+}
+
+criar_log
+echo "#Relatório de Backup#" >> bkp-$data.log
+echo "Iniciado em: $datalogstart" >> bkp-$data.log
+echo -e "Criar Backup""\n"
+echo "Digite o nome do 1º arquivo a compactar:"; read name1
+echo "Digite o nome do 2º arquivo a compactar:"; read name2
+echo "Finalizado em: $datalogend" >> bkp-$data.log
+
+tar -cvzf bkp_$data.tar.gz $name1 $name2

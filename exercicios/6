@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "Digite o nome do usuário que deseja criar:" 
+read newuser
+
+#Verifica se já existe um usuário com o mesmo nome da entrada newuser
+usuario=$(cut -f1 -d":" /etc/passwd | grep $newuser)
+
+#Função que cria usuário sem /home
+function addnewuser(){
+	sudo useradd -M $newuser
+}
+
+if [[ -n  $usuario ]]; then
+	echo "Esse usuário já existe."
+	else
+	addnewuser
+	echo "O usuário $newuser foi criado."
+fi
+
